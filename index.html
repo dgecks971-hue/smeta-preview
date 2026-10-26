@@ -1,0 +1,522 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta name="robots" content="noindex,nofollow">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Смета + КП + акт по вашим расценкам за 30–60 минут — СметаМастер</title>
+<meta name="description" content="Готовые смета, коммерческое предложение и акт по вашим расценкам для частных мастеров и бригад. Первая смета — 490 ₽, комплект — 1 490 ₽. Excel-файлы, чек НПД. Расчёт предварительный.">
+<!-- Пока на странице стоят реквизиты-заглушки, индексировать её не нужно.
+     После замены реквизитов и контактов уберите эту строку. -->
+
+<meta property="og:type" content="website">
+<meta property="og:title" content="Смета + КП + акт по вашим расценкам за 30–60 минут">
+<meta property="og:description" content="Для частных мастеров и бригад: пришлите объект и свой прайс — получите заполненные документы в Excel. Первая смета — 490 ₽.">
+<meta property="og:locale" content="ru_RU">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='12' fill='%231f4e79'/%3E%3Cpath d='M18 18h20l8 8v20H18z' fill='%23fff'/%3E%3Cpath d='M26 34h12v3H26zm0 7h12v3H26z' fill='%231f4e79'/%3E%3C/svg%3E">
+<style>
+  :root {
+    --bg: #f5f7fa;
+    --card: #ffffff;
+    --ink: #18202e;
+    --muted: #5a6475;
+    --line: #dde3ea;
+    --brand: #1f4e79;
+    --brand-2: #2e75b6;
+    --accent: #16a06b;
+    --warn-bg: #fff8e6;
+    --warn-line: #e8c76a;
+    --radius: 14px;
+    --shadow: 0 1px 2px rgba(16, 24, 40, .06), 0 8px 24px rgba(16, 24, 40, .06);
+    --font: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  }
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  @media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+    * { transition: none !important; animation: none !important; }
+  }
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--ink);
+    font: 17px/1.55 var(--font);
+    -webkit-text-size-adjust: 100%;
+  }
+  img, svg { max-width: 100%; }
+  a { color: var(--brand-2); }
+  a:focus-visible, button:focus-visible, summary:focus-visible, input:focus-visible, textarea:focus-visible {
+    outline: 3px solid #7fb2e5;
+    outline-offset: 2px;
+  }
+  .container { width: 100%; max-width: 1000px; margin: 0 auto; padding: 0 16px; }
+
+  /* Шапка */
+  .topbar {
+    position: sticky; top: 0; z-index: 20;
+    background: rgba(255, 255, 255, .94);
+    border-bottom: 1px solid var(--line);
+    backdrop-filter: blur(6px);
+  }
+  .topbar__inner { display: flex; align-items: center; justify-content: space-between; gap: 12px; min-height: 56px; }
+  .logo { display: flex; align-items: center; gap: 9px; font-weight: 700; color: var(--ink); text-decoration: none; font-size: 16px; }
+  .logo__mark {
+    width: 30px; height: 30px; border-radius: 8px; flex: 0 0 auto;
+    background: var(--brand); color: #fff; display: grid; place-items: center;
+    font-size: 13px; font-weight: 700;
+  }
+  .topbar__links { display: flex; align-items: center; gap: 16px; font-size: 14px; }
+  .topbar__links a { color: var(--muted); text-decoration: none; }
+  .topbar__links a:hover { color: var(--brand); }
+  .topbar__cta { display: none; }
+  @media (min-width: 640px) { .topbar__cta { display: inline-flex; } }
+
+  /* Кнопки */
+  .btn {
+    display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+    min-height: 48px; padding: 12px 20px; border-radius: 12px;
+    border: 1px solid transparent; font: inherit; font-weight: 600; font-size: 16px;
+    text-decoration: none; cursor: pointer; text-align: center;
+  }
+  .btn--primary { background: var(--brand); color: #fff; }
+  .btn--primary:hover { background: #173d5e; }
+  .btn--ghost { background: #fff; color: var(--brand); border-color: #b9c9da; }
+  .btn--ghost:hover { border-color: var(--brand-2); }
+  .btn--small { min-height: 40px; padding: 8px 14px; font-size: 14px; border-radius: 10px; }
+  .btn svg { width: 18px; height: 18px; flex: 0 0 auto; }
+
+  /* Секции */
+  section { padding: 44px 0; }
+  .section--alt { background: #fff; border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
+  h1, h2, h3 { line-height: 1.2; margin: 0 0 12px; }
+  h1 { font-size: clamp(27px, 6vw, 42px); letter-spacing: -.4px; }
+  h2 { font-size: clamp(23px, 4.4vw, 31px); letter-spacing: -.2px; }
+  h3 { font-size: 18px; }
+  .lead { font-size: clamp(17px, 2.6vw, 20px); color: var(--muted); margin: 0 0 22px; max-width: 46em; }
+  .eyebrow {
+    display: inline-block; margin-bottom: 14px; padding: 5px 12px; border-radius: 999px;
+    background: #e8f0f8; color: var(--brand); font-size: 13px; font-weight: 600;
+  }
+  .muted { color: var(--muted); }
+  .small { font-size: 14px; }
+  .grid { display: grid; gap: 16px; }
+  @media (min-width: 760px) { .grid--2 { grid-template-columns: 1fr 1fr; } .grid--3 { grid-template-columns: repeat(3, 1fr); } }
+  .card {
+    background: var(--card); border: 1px solid var(--line); border-radius: var(--radius);
+    padding: 22px; box-shadow: var(--shadow);
+  }
+
+  /* Hero */
+  .hero { padding: 34px 0 40px; }
+  .hero__note { margin-top: 18px; display: flex; flex-wrap: wrap; gap: 8px 18px; color: var(--muted); font-size: 14px; }
+  .hero__note span { display: inline-flex; align-items: center; gap: 6px; }
+  .hero__note svg { width: 15px; height: 15px; color: var(--accent); }
+  .cta-row { display: flex; flex-wrap: wrap; gap: 10px; }
+  .cta-row .btn { flex: 1 1 220px; }
+  @media (min-width: 560px) { .cta-row .btn { flex: 0 0 auto; } }
+
+  /* До / после */
+  .compare { display: grid; gap: 16px; }
+  @media (min-width: 760px) { .compare { grid-template-columns: 1fr 1fr; } }
+  .compare__head { display: flex; align-items: center; gap: 10px; margin-bottom: 12px; font-weight: 700; }
+  .pill { font-size: 12px; font-weight: 700; padding: 4px 10px; border-radius: 999px; }
+  .pill--bad { background: #fdecec; color: #a72b2b; }
+  .pill--good { background: #e7f6ee; color: #1f6b47; }
+  .compare ul { margin: 0; padding-left: 20px; }
+  .compare li { margin: 7px 0; }
+  .compare__after { border-color: #b9dcc9; }
+  .mini-estimate { width: 100%; border-collapse: collapse; font-size: 14px; margin-top: 12px; }
+  .mini-estimate th, .mini-estimate td { padding: 7px 6px; border-bottom: 1px solid var(--line); text-align: left; vertical-align: top; }
+  .mini-estimate th { color: var(--muted); font-weight: 600; font-size: 13px; }
+  .mini-estimate td:last-child, .mini-estimate th:last-child { text-align: right; white-space: nowrap; }
+  .mini-estimate tr:last-child td { border-bottom: 0; font-weight: 700; }
+
+  /* Шаги */
+  .steps { counter-reset: step; display: grid; gap: 14px; }
+  @media (min-width: 760px) { .steps { grid-template-columns: 1fr 1fr; } }
+  .step { display: flex; gap: 14px; background: #fff; border: 1px solid var(--line); border-radius: var(--radius); padding: 18px; }
+  .step::before {
+    counter-increment: step; content: counter(step);
+    flex: 0 0 auto; width: 34px; height: 34px; border-radius: 50%;
+    background: var(--brand); color: #fff; font-weight: 700; display: grid; place-items: center;
+  }
+  .step h3 { margin-bottom: 4px; font-size: 16px; }
+  .step p { margin: 0; color: var(--muted); font-size: 15px; }
+
+  /* Тарифы */
+  .plans { display: grid; gap: 16px; }
+  @media (min-width: 880px) { .plans { grid-template-columns: repeat(3, 1fr); align-items: stretch; } }
+  .plan { display: flex; flex-direction: column; background: #fff; border: 1px solid var(--line); border-radius: var(--radius); padding: 22px; box-shadow: var(--shadow); }
+  .plan--featured { border-color: var(--brand-2); border-width: 2px; position: relative; }
+  .plan__badge {
+    position: absolute; top: -13px; left: 18px; background: var(--brand-2); color: #fff;
+    font-size: 12px; font-weight: 700; padding: 4px 10px; border-radius: 999px;
+  }
+  .plan__name { font-weight: 700; font-size: 16px; margin-bottom: 6px; }
+  .plan__price { font-size: clamp(28px, 4vw, 34px); font-weight: 800; letter-spacing: -.5px; margin: 4px 0 2px; }
+  .plan__price small { font-size: 15px; font-weight: 600; color: var(--muted); letter-spacing: 0; }
+  .plan__about { color: var(--muted); font-size: 14px; margin: 0 0 14px; }
+  .plan ul { margin: 0 0 20px; padding-left: 20px; font-size: 15px; }
+  .plan li { margin: 7px 0; }
+  .plan .btn { margin-top: auto; width: 100%; }
+  .plan__foot { margin-top: 10px; font-size: 13px; color: var(--muted); text-align: center; }
+
+  /* FAQ */
+  .faq { display: grid; gap: 10px; }
+  details { background: #fff; border: 1px solid var(--line); border-radius: 12px; padding: 0 18px; }
+  details[open] { border-color: #b9c9da; }
+  summary { cursor: pointer; padding: 16px 0; font-weight: 600; list-style: none; display: flex; justify-content: space-between; gap: 12px; }
+  summary::-webkit-details-marker { display: none; }
+  summary::after { content: "+"; color: var(--brand-2); font-size: 22px; line-height: 1; font-weight: 400; }
+  details[open] summary::after { content: "–"; }
+  details p { margin: 0 0 16px; color: var(--muted); }
+
+  /* Форма */
+  .form-card { max-width: 640px; }
+  .field { margin-bottom: 16px; }
+  .field label { display: block; font-weight: 600; margin-bottom: 6px; font-size: 15px; }
+  .field .hint { color: var(--muted); font-size: 13px; margin-top: 4px; }
+  .field input, .field textarea {
+    width: 100%; padding: 13px 14px; border: 1px solid #c6cfda; border-radius: 10px;
+    font: inherit; font-size: 16px; background: #fff; color: var(--ink);
+  }
+  .field textarea { min-height: 110px; resize: vertical; }
+  .form-status { margin-top: 12px; font-size: 14px; min-height: 20px; }
+  .form-status[data-state="error"] { color: #a72b2b; }
+  .form-status[data-state="ok"] { color: #1f6b47; }
+
+  /* Дисклеймер и подвал */
+  .notice {
+    background: var(--warn-bg); border: 1px solid var(--warn-line); border-radius: 12px;
+    padding: 14px 16px; font-size: 14px; color: #5c4a12;
+  }
+  footer { background: #fff; border-top: 1px solid var(--line); padding: 34px 0 100px; }
+  .footer__grid { display: grid; gap: 24px; }
+  @media (min-width: 760px) { .footer__grid { grid-template-columns: 1.3fr 1fr; } }
+  .footer h3 { font-size: 15px; margin-bottom: 8px; }
+  .footer p, .footer li { font-size: 14px; color: var(--muted); }
+  .footer ul { margin: 0; padding: 0; list-style: none; }
+  .footer li { margin: 6px 0; }
+  .footer a { color: var(--brand-2); }
+  .footer__legal { margin-top: 22px; padding-top: 18px; border-top: 1px solid var(--line); font-size: 13px; color: var(--muted); }
+  .req { font-style: normal; }
+
+  /* Мобильная панель CTA */
+  .mobile-cta {
+    position: fixed; left: 0; right: 0; bottom: 0; z-index: 30;
+    display: flex; gap: 10px; padding: 10px 12px calc(10px + env(safe-area-inset-bottom));
+    background: rgba(255, 255, 255, .97); border-top: 1px solid var(--line);
+  }
+  .mobile-cta .btn { flex: 1; min-height: 46px; font-size: 15px; }
+  @media (min-width: 900px) { .mobile-cta { display: none; } footer { padding-bottom: 34px; } }
+  .visually-hidden {
+    position: absolute; width: 1px; height: 1px; margin: -1px; padding: 0;
+    overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; border: 0;
+  }
+</style>
+</head>
+<body>
+<div style="background:#b00020;color:#fff;padding:8px 12px;text-align:center;font:14px/1.4 sans-serif;position:sticky;top:0;z-index:99999">ПРЕВЬЮ. Демо-данные (НПД, без ИП). Не для клиентов.</div>
+
+<header class="topbar">
+  <div class="container topbar__inner">
+    <a class="logo" href="#top" aria-label="СметаМастер — на главную">
+      <span class="logo__mark" aria-hidden="true">СМ</span>
+      <span>СметаМастер</span>
+    </a>
+    <nav class="topbar__links" aria-label="Основная навигация">
+      <a href="#how">Как это работает</a>
+      <a href="#pricing">Тарифы</a>
+      <a href="#faq">Вопросы</a>
+      <a class="btn btn--primary btn--small topbar__cta" href="https://t.me/preview_demo">Написать в Telegram</a>
+    </nav>
+  </div>
+</header>
+
+<main id="top">
+
+  <!-- ================= ГЕРОЙ ================= -->
+  <section class="hero">
+    <div class="container">
+      <span class="eyebrow">Для частных мастеров и бригад · 1–5 человек</span>
+      <h1>Смета + КП + акт по&nbsp;вашим расценкам за&nbsp;30–60&nbsp;минут</h1>
+      <p class="lead">
+        Пришлите объект, объёмы и свой прайс — получите заполненные документы в Excel:
+        смету по разделам, коммерческое предложение для заказчика и акт.
+        Цифры остаются вашими: вы проверяете и правите их перед отправкой.
+      </p>
+      <div class="cta-row">
+        <a class="btn btn--primary" href="https://t.me/preview_demo">
+          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M21.9 4.3 18.8 19c-.2 1-.9 1.2-1.7.8l-4.7-3.5-2.3 2.2c-.3.3-.5.5-1 .5l.4-4.9 9-8.1c.4-.3-.1-.5-.6-.2L7.1 12.7l-4.7-1.5c-1-.3-1-1 .2-1.5l18.2-7c.8-.3 1.6.2 1.3 1.6z"/></svg>
+          Написать в Telegram
+        </a>
+        <a class="btn btn--ghost" href="mailto:preview@test.ru">Написать на почту</a>
+        <a class="btn btn--ghost" href="#pricing">Тарифы и цены</a>
+      </div>
+      <div class="hero__note">
+        <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="m4 12 5 5L20 6"/></svg>Первая смета — 490 ₽</span>
+        <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="m4 12 5 5L20 6"/></svg>Оплата после проверки расчёта</span>
+        <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="m4 12 5 5L20 6"/></svg>Чек НПД, без НДС</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= ДО / ПОСЛЕ ================= -->
+  <section class="section--alt" id="compare">
+    <div class="container">
+      <h2>Что меняется</h2>
+      <p class="lead">Одна и та же заявка: как обычно выглядит расчёт «на глаз» и что приходит на руки.</p>
+      <div class="compare">
+        <div class="card">
+          <div class="compare__head"><span class="pill pill--bad">Было</span> Расчёт в блокноте или «на глаз»</div>
+          <ul>
+            <li>Одна строка «санузел под ключ — 130 000 ₽», без объёмов и разбивки.</li>
+            <li>Заказчик просит детализацию — приходится пересчитывать вручную.</li>
+            <li>Про материалы и накладные забыли, маржа «утонула».</li>
+            <li>КП и акт — отдельно, в разных файлах и с разными суммами.</li>
+            <li>На оформление уходит вечер, заказ ждёт.</li>
+          </ul>
+        </div>
+        <div class="card compare__after">
+          <div class="compare__head"><span class="pill pill--good">Стало</span> Комплект документов в Excel</div>
+          <ul>
+            <li>Смета по разделам: подготовка, работы, материалы, накладные.</li>
+            <li>Позиции с единицами, количеством и ценой; суммы считаются формулами.</li>
+            <li>Итог, предоплата и остаток — на одном листе, цифры не расходятся.</li>
+            <li>КП и акт формируются из той же сметы автоматически.</li>
+            <li>Вы проверяете и меняете цены сами — файл ваш.</li>
+          </ul>
+          <table class="mini-estimate" aria-label="Пример сметы: фрагмент">
+            <thead>
+              <tr><th scope="col">Раздел</th><th scope="col">Стоимость</th></tr>
+            </thead>
+            <tbody>
+              <tr><td>Подготовка, обмеры</td><td>2 500 ₽</td></tr>
+              <tr><td>Работы</td><td>51 972 ₽</td></tr>
+              <tr><td>Материалы</td><td>64 125 ₽</td></tr>
+              <tr><td>Накладные (12 %)</td><td>14 232 ₽</td></tr>
+              <tr><td>Итого (НДС нет, НПД)</td><td>132 829 ₽</td></tr>
+            </tbody>
+          </table>
+          <p class="small muted" style="margin:10px 0 0">Фрагмент демо-сметы. Цифры условные, показаны для формата.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= КОМУ ПОДХОДИТ ================= -->
+  <section>
+    <div class="container">
+      <h2>Кому подходит</h2>
+      <div class="grid grid--3">
+        <div class="card">
+          <h3>Частный мастер</h3>
+          <p class="muted" style="margin:0">Отделочник, плиточник, электрик, сантехник. Работает сам или с помощником, заказы — от частных заказчиков.</p>
+        </div>
+        <div class="card">
+          <h3>Бригадир</h3>
+          <p class="muted" style="margin:0">Ведёт 1–5 человек, регулярно отправляет КП и сметы, нужен единый шаблон и повторяемые документы.</p>
+        </div>
+        <div class="card">
+          <h3>Прораб-новичок</h3>
+          <p class="muted" style="margin:0">Только начал работать на себя, нет своего шаблона и времени разбираться в формулах Excel.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= КАК ЭТО РАБОТАЕТ ================= -->
+  <section class="section--alt" id="how">
+    <div class="container">
+      <h2>Как это работает</h2>
+      <p class="lead">Четыре шага. Ни установки программ, ни обучения: документы приходят готовым файлом.</p>
+      <div class="steps">
+        <div class="step">
+          <div>
+            <h3>Пишете в Telegram или на почту</h3>
+            <p>Объект, примерные объёмы, ваш прайс или последняя смета, срок и имя заказчика. Можно фото замеров или скрин прайса.</p>
+          </div>
+        </div>
+        <div class="step">
+          <div>
+            <h3>Уточняем 2–3 вопроса</h3>
+            <p>Если чего-то не хватает в заявке — спрашиваем. Цены берём ваши, ничего не придумываем.</p>
+          </div>
+        </div>
+        <div class="step">
+          <div>
+            <h3>Получаете смету в Excel за 30–60 минут</h3>
+            <p>В рабочее время и при полной заявке. В комплекте — смета, КП и акт: печатные формы для заказчика.</p>
+          </div>
+        </div>
+        <div class="step">
+          <div>
+            <h3>Проверяете, правите, оплачиваете</h3>
+            <p>Правки в рамках согласованного объёма. После проверки — оплата и чек НПД в приложении «Мой налог».</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= ТАРИФЫ ================= -->
+  <section id="pricing">
+    <div class="container">
+      <h2>Тарифы</h2>
+      <p class="lead">Оплата после проверки расчёта. Комплект и пакет — с предоплатой 50 %.</p>
+      <div class="plans">
+        <div class="plan">
+          <div class="plan__name">Проба</div>
+          <div class="plan__price">490 <small>₽ / раз</small></div>
+          <p class="plan__about">Познакомиться с форматом и качеством.</p>
+          <ul>
+            <li>Одна смета по вашей заявке</li>
+            <li>Цифры по вашим расценкам</li>
+            <li>Один круг правок</li>
+            <li>Файл Excel</li>
+          </ul>
+          <a class="btn btn--ghost" href="https://t.me/preview_demo">Заказать пробу</a>
+          <div class="plan__foot">Срок — до 60 минут в рабочее время</div>
+        </div>
+
+        <div class="plan plan--featured">
+          <span class="plan__badge">Чаще всего берут</span>
+          <div class="plan__name">Комплект</div>
+          <div class="plan__price">1 490 <small>₽ / заказ</small></div>
+          <p class="plan__about">Полный пакет документов для заказчика.</p>
+          <ul>
+            <li>Смета + КП + акт</li>
+            <li>Смета по разделам и итогам</li>
+            <li>Печатные формы КП и акта</li>
+            <li>Два круга правок</li>
+            <li>Excel; PDF — по запросу</li>
+          </ul>
+          <a class="btn btn--primary" href="https://t.me/preview_demo">Заказать комплект</a>
+          <div class="plan__foot">Предоплата 50 %, остаток после проверки</div>
+        </div>
+
+        <div class="plan">
+          <div class="plan__name">Пакет 5 смет</div>
+          <div class="plan__price">3 900 <small>₽ / пакет</small></div>
+          <p class="plan__about">Для тех, кто отправляет сметы регулярно.</p>
+          <ul>
+            <li>5 комплектов: смета + КП + акт</li>
+            <li>Шаблон с вашими расценками</li>
+            <li>Приоритет по сроку</li>
+            <li>1 правка на каждую смету</li>
+            <li>Неиспользованные сметы не сгорают 60 дней</li>
+          </ul>
+          <a class="btn btn--ghost" href="https://t.me/preview_demo">Взять пакет</a>
+          <div class="plan__foot">3 900 ₽ за 5 смет вместо 7 450 ₽ · предоплата 50 %</div>
+        </div>
+      </div>
+      <div class="notice" style="margin-top:20px">
+        Нужен другой объём — от 6 комплектов в месяц или срочно? Напишите: посчитаем индивидуально.
+        Цены на странице — ориентировочные; актуальные условия — в <a href="oferta.html">договоре-оферте</a>.
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= FAQ ================= -->
+  <section class="section--alt" id="faq">
+    <div class="container">
+      <h2>Частые вопросы</h2>
+      <div class="faq">
+        <details>
+          <summary>Чем это отличается от сметчика или проектной организации?</summary>
+          <p>Сметчик и проектная организация считают по нормативам (ГЭСН/ФЕР), выпускают официальную смету и несут ответственность как специалисты. Здесь другая задача: быстро оформить расчёт по вашим расценкам и объёмам в аккуратные документы для частного заказчика. Это предварительный расчёт, он не заменяет смету проектной организации.</p>
+        </details>
+        <details>
+          <summary>Кто отвечает за правильность цифр?</summary>
+          <p>Вы. Мы оформляем документы по данным, которые вы прислали, и не выезжаем на объект. Перед отправкой заказчику вы проверяете объёмы и цены — файл открыт, любую цифру можно поправить. Поэтому в смете всегда стоит пометка «расчёт предварительный».</p>
+        </details>
+        <details>
+          <summary>Откуда вы берёте цены?</summary>
+          <p>Из вашего прайса или из данных заявки. Ничего не придумываем и не подставляем «средние по рынку» без вашего согласия. Если прайса нет — пришлите последнюю смету или список расценок текстом.</p>
+        </details>
+        <details>
+          <summary>Сколько ждать?</summary>
+          <p>30–60 минут в рабочее время, если заявка полная. Если присылаете вечером или очередь занята — предупредим и назовём реальный срок. Срочные заказы — по договорённости.</p>
+        </details>
+        <details>
+          <summary>Как оплатить и какие документы получу?</summary>
+          <p>Перевод по СБП или по платёжной ссылке. После оплаты приходит чек НПД из приложения «Мой налог». НДС не начисляется: исполнитель применяет налог на профессиональный доход. Для юрлица — счёт и чек с ИНН покупателя (по запросу).</p>
+        </details>
+        <details>
+          <summary>А если результат не понравится?</summary>
+          <p>Правки в рамках согласованного объёма — бесплатно. Для пробы 490 ₽: если результат не соответствует согласованному заданию, вернём 490 ₽ или переделаем 1 раз. Для комплекта и пакета — правки; возврат — по условиям <a href="oferta.html">оферты</a>. После передачи документов услуга считается оказанной, но спорные вопросы решаем перепиской и правками.</p>
+        </details>
+        <details>
+          <summary>Что с конфиденциальностью данных?</summary>
+          <p>Данные заявки (имена, телефоны, адреса объектов) используются только для подготовки документов и не передаются третьим лицам. Хранение и удаление — по <a href="privacy.html">политике обработки персональных данных</a>.</p>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= КОНТАКТЫ ================= -->
+  <section id="contact">
+    <div class="container">
+      <h2>Связаться</h2>
+      <p class="lead">Напишите в Telegram или на почту — отвечу в рабочее время (10:00–18:00 МСК, будни). Пришлите объект, объёмы и ваши расценки; если чего-то не хватает, задам 2–3 вопроса.</p>
+      <div class="card form-card">
+        <p><strong>Telegram:</strong> <a href="https://t.me/preview_demo">написать</a></p>
+        <p><strong>Email:</strong> <a href="mailto:preview@test.ru">preview@test.ru</a></p>
+        <p class="small muted" style="margin:0">Данные заявки использую только для ответа и подготовки документов; по запросу удаляю. Подробнее — в <a href="privacy.html">политике</a>.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= ДИСКЛЕЙМЕР ================= -->
+  <section>
+    <div class="container">
+      <div class="notice">
+        <strong>Важно:</strong> все расчёты на сайте и в документах — предварительные. Они не заменяют смету проектной организации,
+        не являются заключением эксперта и не гарантируют итоговую стоимость работ. Объёмы и цены перед договором с заказчиком
+        проверяет исполнитель работ. Стоимость и сроки на странице носят справочный характер; условия оказания услуг —
+        в <a href="oferta.html">договоре-оферте</a>.
+      </div>
+    </div>
+  </section>
+</main>
+
+<!-- ================= ПОДВАЛ ================= -->
+<footer>
+  <div class="container">
+    <div class="footer__grid">
+      <div>
+        <h3>СметаМастер</h3>
+        <p>Документы для частных мастеров и бригад: смета, коммерческое предложение, акт — по вашим расценкам.</p>
+        <p class="small">Связь: <a href="https://t.me/preview_demo">Telegram</a> ·
+          <a href="mailto:preview@test.ru">preview@test.ru</a></p>
+      </div>
+      <div>
+        <h3>Документы</h3>
+        <ul>
+          <li><a href="oferta.html">Договор-оферта</a></li>
+          <li><a href="privacy.html">Политика обработки персональных данных</a></li>
+          <li><a href="oferta.md">Исходник оферты (Markdown)</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer__legal">
+      <p><strong>Исполнитель:</strong> физическое лицо, применяющее специальный налоговый режим «Налог на профессиональный доход» (НПД).</p>
+      <p class="req">
+        ФИО: Демо Демо Демо<br>
+        Налоговый режим: НПД. НДС не начисляется.<br>
+        ИНН и адрес — по запросу; чек НПД содержит ИНН исполнителя.
+      </p>
+      <p>© 2026 СметаМастер. Информация на странице не является публичной офертой; условия — в договоре-оферте.
+        Страница не использует трекеры и внешние счётчики.</p>
+    </div>
+  </div>
+</footer>
+
+<!-- Мобильная панель CTA -->
+<div class="mobile-cta" aria-label="Быстрая связь">
+  <a class="btn btn--primary" href="https://t.me/preview_demo">Telegram</a>
+  <a class="btn btn--ghost" href="mailto:preview@test.ru">Email</a>
+</div>
+
+</body>
+</html>
